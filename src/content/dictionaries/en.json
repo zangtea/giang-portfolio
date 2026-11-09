@@ -1,0 +1,110 @@
+{
+  "nav": {
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "experience": "Experience",
+    "contact": "Contact",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "cta_primary": "Discuss a project",
+    "cta_secondary": "View projects",
+    "cta_cv": "Download CV",
+    "available": "Available for new projects"
+  },
+  "about": {
+    "title": "About",
+    "subtitle": "About me",
+    "approach_title": "My Approach",
+    "approach": "I believe great software starts with understanding the right problem. Before writing code, I take time to deeply understand real needs, identify technical constraints, and design scalable solutions. I enjoy working on projects that are complex enough to learn from, while still delivering on time.",
+    "values_title": "What I Bring",
+    "values": ["Clean, maintainable code", "On-time delivery", "Clear communication throughout the project", "Performance optimization and great UX"]
+  },
+  "skills": {
+    "title": "Skills",
+    "subtitle": "Technologies I work with"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "What I've built",
+    "filter_all": "All",
+    "filter_web": "Web App",
+    "filter_tool": "Tool",
+    "filter_ecommerce": "E-commerce",
+    "filter_ai": "AI/ML",
+    "view_detail": "View details",
+    "view_github": "GitHub",
+    "view_demo": "Live Demo",
+    "in_progress": "In Progress",
+    "completed": "Completed",
+    "prototype": "Prototype",
+    "tech_stack": "Tech Stack",
+    "back_to_projects": "Back to projects",
+    "next_project": "Next project",
+    "overview": "Overview",
+    "problem": "Problem",
+    "solution": "Solution",
+    "features": "Features",
+    "my_role": "My Role",
+    "source_code": "Source Code",
+    "not_found": "Project not found",
+    "not_found_desc": "The project you're looking for doesn't exist or has been removed."
+  },
+  "experience": {
+    "title": "Experience",
+    "subtitle": "My Journey",
+    "work": "Work Experience",
+    "education": "Education",
+    "certificate": "Certificates",
+    "placeholder": "Information being updated"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Let's build something together",
+    "description": "I'm open to freelance projects. If you have an idea or need technical support, reach out to discuss.",
+    "email_label": "Email",
+    "github_label": "GitHub",
+    "linkedin_label": "LinkedIn",
+    "cta": "Send inquiry",
+    "form_name": "Full name",
+    "form_email": "Email",
+    "form_subject": "Subject",
+    "form_message": "Message",
+    "form_submit": "Send message",
+    "form_sending": "Sending...",
+    "form_success": "Message sent successfully!",
+    "form_error": "An error occurred. Please try again.",
+    "form_name_required": "Please enter your name",
+    "form_email_invalid": "Invalid email address",
+    "form_message_required": "Please enter a message"
+  },
+  "theme": {
+    "light": "Light mode",
+    "dark": "Dark mode",
+    "toggle": "Toggle theme"
+  },
+  "lang": {
+    "vi": "Tiếng Việt",
+    "en": "English",
+    "switch": "Chuyển ngôn ngữ"
+  },
+  "footer": {
+    "rights": "All rights reserved",
+    "built_with": "Built with"
+  },
+  "errors": {
+    "404_title": "Page not found",
+    "404_desc": "The page you're looking for doesn't exist.",
+    "back_home": "Go home",
+    "generic": "Something went wrong"
+  },
+  "aria": {
+    "main_nav": "Main navigation",
+    "skip_to_content": "Skip to main content",
+    "social_links": "Social links",
+    "project_thumbnail": "Project thumbnail"
+  }
+}

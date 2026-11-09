@@ -1,0 +1,110 @@
+{
+  "nav": {
+    "about": "Giới thiệu",
+    "skills": "Kỹ năng",
+    "projects": "Dự án",
+    "experience": "Kinh nghiệm",
+    "contact": "Liên hệ",
+    "openMenu": "Mở menu",
+    "closeMenu": "Đóng menu"
+  },
+  "hero": {
+    "greeting": "Xin chào, tôi là",
+    "cta_primary": "Thảo luận về dự án",
+    "cta_secondary": "Xem dự án",
+    "cta_cv": "Tải CV",
+    "available": "Sẵn sàng nhận dự án mới"
+  },
+  "about": {
+    "title": "Giới thiệu",
+    "subtitle": "Về tôi",
+    "approach_title": "Cách tiếp cận",
+    "approach": "Tôi tin rằng phần mềm tốt bắt đầu từ việc hiểu đúng vấn đề. Trước khi viết code, tôi dành thời gian nắm rõ nhu cầu thực sự, xác định giới hạn kỹ thuật và thiết kế giải pháp có thể mở rộng được. Tôi thích làm việc với những dự án có độ phức tạp vừa đủ để học hỏi, nhưng vẫn giao sản phẩm đúng hạn.",
+    "values_title": "Giá trị mang lại",
+    "values": ["Code sạch, có thể bảo trì", "Giao sản phẩm đúng thời hạn", "Giao tiếp rõ ràng trong suốt dự án", "Tối ưu hiệu năng và trải nghiệm người dùng"]
+  },
+  "skills": {
+    "title": "Kỹ năng",
+    "subtitle": "Công nghệ tôi sử dụng"
+  },
+  "projects": {
+    "title": "Dự án",
+    "subtitle": "Những gì tôi đã xây dựng",
+    "filter_all": "Tất cả",
+    "filter_web": "Web App",
+    "filter_tool": "Tool",
+    "filter_ecommerce": "E-commerce",
+    "filter_ai": "AI/ML",
+    "view_detail": "Xem chi tiết",
+    "view_github": "GitHub",
+    "view_demo": "Live Demo",
+    "in_progress": "Đang phát triển",
+    "completed": "Hoàn thành",
+    "prototype": "Prototype",
+    "tech_stack": "Công nghệ",
+    "back_to_projects": "Quay lại dự án",
+    "next_project": "Dự án tiếp theo",
+    "overview": "Tổng quan",
+    "problem": "Vấn đề",
+    "solution": "Giải pháp",
+    "features": "Tính năng",
+    "my_role": "Vai trò của tôi",
+    "source_code": "Mã nguồn",
+    "not_found": "Dự án không tồn tại",
+    "not_found_desc": "Dự án bạn tìm kiếm không tồn tại hoặc đã bị xóa."
+  },
+  "experience": {
+    "title": "Kinh nghiệm",
+    "subtitle": "Hành trình của tôi",
+    "work": "Kinh nghiệm làm việc",
+    "education": "Học vấn",
+    "certificate": "Chứng chỉ",
+    "placeholder": "Thông tin đang được cập nhật"
+  },
+  "contact": {
+    "title": "Liên hệ",
+    "subtitle": "Hãy cùng xây dựng điều gì đó",
+    "description": "Tôi đang nhận dự án freelance. Nếu bạn có ý tưởng hoặc cần hỗ trợ kỹ thuật, hãy liên hệ để thảo luận.",
+    "email_label": "Email",
+    "github_label": "GitHub",
+    "linkedin_label": "LinkedIn",
+    "cta": "Gửi yêu cầu",
+    "form_name": "Họ và tên",
+    "form_email": "Email",
+    "form_subject": "Chủ đề",
+    "form_message": "Nội dung",
+    "form_submit": "Gửi tin nhắn",
+    "form_sending": "Đang gửi...",
+    "form_success": "Tin nhắn đã được gửi thành công!",
+    "form_error": "Có lỗi xảy ra. Vui lòng thử lại.",
+    "form_name_required": "Vui lòng nhập họ tên",
+    "form_email_invalid": "Email không hợp lệ",
+    "form_message_required": "Vui lòng nhập nội dung"
+  },
+  "theme": {
+    "light": "Chế độ sáng",
+    "dark": "Chế độ tối",
+    "toggle": "Chuyển đổi giao diện"
+  },
+  "lang": {
+    "vi": "Tiếng Việt",
+    "en": "English",
+    "switch": "Switch language"
+  },
+  "footer": {
+    "rights": "Bảo lưu mọi quyền",
+    "built_with": "Xây dựng với"
+  },
+  "errors": {
+    "404_title": "Trang không tìm thấy",
+    "404_desc": "Trang bạn đang tìm kiếm không tồn tại.",
+    "back_home": "Về trang chủ",
+    "generic": "Có lỗi xảy ra"
+  },
+  "aria": {
+    "main_nav": "Điều hướng chính",
+    "skip_to_content": "Bỏ qua đến nội dung chính",
+    "social_links": "Liên kết mạng xã hội",
+    "project_thumbnail": "Ảnh thumbnail dự án"
+  }
+}
