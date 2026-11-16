@@ -8,11 +8,13 @@ import type { Locale } from "@/config/site";
 interface LanguageSwitcherProps {
   currentLocale: Locale;
   className?: string;
+  ariaLabel?: string;
 }
 
 export function LanguageSwitcher({
   currentLocale,
   className,
+  ariaLabel = "Switch language",
 }: LanguageSwitcherProps) {
   const pathname = usePathname();
 
@@ -28,7 +30,7 @@ export function LanguageSwitcher({
   return (
     <div
       className={cn("flex items-center gap-1 text-sm font-medium", className)}
-      aria-label="Language switcher"
+      aria-label={ariaLabel}
     >
       <Link
         href={getLocalizedPath("vi")}

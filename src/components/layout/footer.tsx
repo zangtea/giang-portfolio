@@ -1,35 +1,38 @@
 import Link from "next/link";
-import { Github, Linkedin, Mail, ExternalLink } from "lucide-react";
+import { Mail, ExternalLink } from "lucide-react";
+import { FaLinkedinIn } from "react-icons/fa6";
+import { SiGithub } from "react-icons/si";
 import { siteConfig } from "@/config/site";
 import { getDictionary } from "@/lib/dictionaries";
 import type { Locale } from "@/config/site";
+
+const currentYear = new Date().getFullYear();
 
 interface FooterProps {
   locale: Locale;
 }
 
 export async function Footer({ locale }: FooterProps) {
-  const dict = await getDictionary();
-  const year = new Date().getFullYear();
+  const dict = await getDictionary(locale);
 
   const socialLinks = [
     {
       href: siteConfig.github,
-      icon: Github,
+      icon: SiGithub,
       label: dict.contact.github_label,
-      show: siteConfig.github !== "[YOUR_GITHUB]",
+      show: true,
     },
     {
       href: siteConfig.linkedin,
-      icon: Linkedin,
+      icon: FaLinkedinIn,
       label: dict.contact.linkedin_label,
-      show: siteConfig.linkedin !== "[YOUR_LINKEDIN]",
+      show: true,
     },
     {
       href: `mailto:${siteConfig.email}`,
       icon: Mail,
       label: dict.contact.email_label,
-      show: siteConfig.email !== "[YOUR_EMAIL]",
+      show: true,
     },
   ].filter((link) => link.show);
 
@@ -39,10 +42,10 @@ export async function Footer({ locale }: FooterProps) {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           {/* Copyright */}
           <p className="text-sm text-[var(--color-mut)]">
-            © {year}{" "}
-            {siteConfig.displayName === "[YOUR_NAME]"
-              ? "Portfolio"
-              : siteConfig.displayName}
+            © {currentYear}{" "}
+            <Link href={`/${locale}`} className="font-medium text-[var(--color-fg)] hover:text-[var(--color-accent)]">
+              {siteConfig.displayName}
+            </Link>
             . {dict.footer.rights}.
           </p>
 

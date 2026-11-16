@@ -9,16 +9,16 @@
   --font-mono: var(--font-geist-mono), "Fira Code", monospace;
 
   /* Brand colors */
-  --color-brand-50: oklch(97% 0.01 250);
-  --color-brand-100: oklch(93% 0.03 250);
-  --color-brand-200: oklch(87% 0.06 250);
-  --color-brand-300: oklch(79% 0.1 250);
-  --color-brand-400: oklch(68% 0.15 250);
-  --color-brand-500: oklch(57% 0.19 250);
-  --color-brand-600: oklch(48% 0.17 250);
-  --color-brand-700: oklch(40% 0.14 250);
-  --color-brand-800: oklch(32% 0.1 250);
-  --color-brand-900: oklch(24% 0.07 250);
+  --color-brand-50: oklch(97% 0.01 30);
+  --color-brand-100: oklch(93% 0.03 30);
+  --color-brand-200: oklch(87% 0.06 30);
+  --color-brand-300: oklch(79% 0.1 30);
+  --color-brand-400: oklch(68% 0.15 30);
+  --color-brand-500: var(--color-accent);
+  --color-brand-600: oklch(48% 0.17 30);
+  --color-brand-700: oklch(40% 0.14 30);
+  --color-brand-800: oklch(32% 0.1 30);
+  --color-brand-900: oklch(24% 0.07 30);
 
   /* Semantic colors (light mode defaults) */
   --color-background: var(--color-bg);
@@ -28,6 +28,8 @@
   --color-border: var(--color-bdr);
   --color-muted: var(--color-mut);
   --color-accent: var(--color-brand-500);
+  --color-accent-strong: var(--color-brand-600);
+  --color-accent-ink: white;
 }
 
 /* ============================================
@@ -35,21 +37,27 @@
    ============================================ */
 :root,
 [data-theme="light"] {
-  --color-bg: oklch(99% 0 0);
-  --color-fg: oklch(10% 0 0);
-  --color-surf: oklch(96% 0.005 250);
-  --color-surf-hover: oklch(92% 0.01 250);
-  --color-bdr: oklch(88% 0.005 250);
-  --color-mut: oklch(45% 0 0);
+  --color-bg: oklch(99% 0.002 70);
+  --color-fg: oklch(16% 0.015 35);
+  --color-surf: oklch(96% 0.006 70);
+  --color-surf-hover: oklch(92% 0.01 70);
+  --color-bdr: oklch(86% 0.008 50);
+  --color-mut: oklch(44% 0.015 35);
+  --color-accent: oklch(50% 0.18 30);
+  --color-accent-strong: oklch(42% 0.17 30);
+  --color-accent-ink: white;
 }
 
 [data-theme="dark"] {
-  --color-bg: oklch(10% 0.005 250);
-  --color-fg: oklch(95% 0 0);
-  --color-surf: oklch(16% 0.01 250);
-  --color-surf-hover: oklch(21% 0.015 250);
-  --color-bdr: oklch(28% 0.01 250);
-  --color-mut: oklch(60% 0 0);
+  --color-bg: oklch(14% 0.008 45);
+  --color-fg: oklch(94% 0.005 75);
+  --color-surf: oklch(20% 0.01 45);
+  --color-surf-hover: oklch(25% 0.012 45);
+  --color-bdr: oklch(32% 0.012 45);
+  --color-mut: oklch(68% 0.012 70);
+  --color-accent: oklch(73% 0.15 32);
+  --color-accent-strong: oklch(79% 0.13 32);
+  --color-accent-ink: oklch(16% 0.02 32);
 }
 
 /* ============================================
@@ -57,6 +65,16 @@
    ============================================ */
 html {
   scroll-behavior: smooth;
+}
+
+.section-reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+html.js .section-reveal:not(.section-visible):not(:focus-within) {
+  opacity: 0;
+  transform: translateY(2rem);
 }
 
 body {
@@ -111,6 +129,11 @@ body {
 
   html {
     scroll-behavior: auto;
+  }
+
+  .section-reveal {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
 

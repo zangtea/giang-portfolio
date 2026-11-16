@@ -1,9 +1,10 @@
 import { siteConfig } from "@/config/site";
-import { projects } from "@/content/projects";
+import { projects } from "@/content/projects/projects";
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.siteUrl;
+  if (!baseUrl) return [];
   const now = new Date();
 
   const localePages = siteConfig.locales.map((locale) => ({

@@ -18,7 +18,7 @@ export function Badge({
         variant === "default" &&
           "bg-[var(--color-surf)] text-[var(--color-fg)] border border-[var(--color-bdr)]",
         variant === "accent" &&
-          "bg-[var(--color-brand-100)] text-[var(--color-brand-700)] dark:bg-[var(--color-brand-900)] dark:text-[var(--color-brand-200)]",
+          "bg-[var(--color-surf-hover)] text-[var(--color-accent)]",
         variant === "muted" && "bg-[var(--color-surf)] text-[var(--color-mut)]",
         className
       )}

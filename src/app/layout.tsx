@@ -19,32 +19,26 @@ export const metadata: Metadata = {
     template: "%s | Portfolio",
     default: "Portfolio",
   },
-  robots: {
-    index: false, // set to true once site is live with real content
-    follow: false,
-  },
+  // Set robots to noindex until you're ready to go public.
+  // Change to { index: true, follow: true } before publishing.
+  robots: { index: false, follow: false },
 };
 
-// Theme inline script: runs before paint, reads localStorage or system preference
-const themeScript = `(function(){try{var t=localStorage.getItem("theme");if(t){document.documentElement.setAttribute("data-theme",t)}else if(window.matchMedia("(prefers-color-scheme: dark)").matches){document.documentElement.setAttribute("data-theme","dark")}else{document.documentElement.setAttribute("data-theme","light")}}catch(e){}})()`;
+const themeScript = `(function(){var d=document.documentElement;var t=null;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="dark"&&t!=="light"){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}d.setAttribute("data-theme",t);var l=location.pathname.split("/")[1];if(l==="vi"||l==="en")d.lang=l;d.classList.add("js")})()`;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="vi"
       data-theme="light"
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable}`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body className="min-h-screen flex flex-col antialiased">
-        <a href="#main-content" className="skip-link">
-          Bỏ qua đến nội dung chính
-        </a>
-        {children}
-      </body>
+      <body className="flex min-h-screen flex-col antialiased">{children}</body>
     </html>
   );
 }

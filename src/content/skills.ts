@@ -1,6 +1,6 @@
 export interface Skill {
   name: string;
-  context?: string; // brief usage context
+  context?: { vi: string; en: string };
 }
 
 export interface SkillCategory {
@@ -14,30 +14,30 @@ export const skillCategories: SkillCategory[] = [
     key: "frontend",
     label: { vi: "Frontend", en: "Frontend" },
     skills: [
-      { name: "React", context: "SPA, SSR, RSC" },
-      { name: "Next.js", context: "App Router, SSR, SSG" },
-      { name: "TypeScript", context: "Strict mode" },
-      { name: "Tailwind CSS", context: "v3, v4" },
-      { name: "Framer Motion", context: "Animation" },
+      { name: "React", context: { vi: "Nền tảng cho giao diện Next.js", en: "UI foundation for Next.js" } },
+      { name: "Next.js", context: { vi: "App Router và ứng dụng web", en: "App Router and web applications" } },
+      { name: "TypeScript", context: { vi: "Ứng dụng web và API", en: "Web applications and APIs" } },
+      { name: "Tailwind CSS", context: { vi: "Giao diện responsive", en: "Responsive interfaces" } },
+      { name: "EJS", context: { vi: "Giao diện server-rendered", en: "Server-rendered views" } },
     ],
   },
   {
     key: "backend",
     label: { vi: "Backend", en: "Backend" },
     skills: [
-      { name: "Node.js", context: "API, scripting" },
-      { name: "Express.js", context: "REST API" },
-      { name: "Python", context: "AI/ML engine" },
+      { name: "Node.js", context: { vi: "Backend cho công cụ và ứng dụng web", en: "Backend for tools and web applications" } },
+      { name: "Express.js", context: { vi: "API và routing phía máy chủ", en: "APIs and server-side routing" } },
+      { name: "Python", context: { vi: "Thành phần IRT/AI trong OmniEdu", en: "IRT/AI components in OmniEdu" } },
     ],
   },
   {
     key: "database",
     label: { vi: "Database", en: "Database" },
     skills: [
-      { name: "PostgreSQL", context: "Supabase, raw SQL" },
-      { name: "MySQL", context: "Prisma ORM" },
-      { name: "Supabase", context: "Auth, Storage, RLS" },
-      { name: "Prisma", context: "ORM" },
+      { name: "PostgreSQL", context: { vi: "Cơ sở dữ liệu Supabase", en: "Supabase database" } },
+      { name: "MySQL", context: { vi: "Cơ sở dữ liệu BlackBlue Laptop", en: "BlackBlue Laptop database" } },
+      { name: "Supabase", context: { vi: "Lớp dữ liệu OmniEdu", en: "OmniEdu data layer" } },
+      { name: "Prisma", context: { vi: "ORM cho MySQL", en: "ORM for MySQL" } },
     ],
   },
   {
@@ -54,20 +54,25 @@ export const skillCategories: SkillCategory[] = [
     key: "tools",
     label: { vi: "Công cụ & Quy trình", en: "Tools & Workflow" },
     skills: [
-      { name: "Git", context: "GitHub, branching" },
-      { name: "Vercel", context: "Deploy, CI/CD" },
-      { name: "Docker", context: "Container basics" },
-      { name: "ESLint", context: "Code quality" },
-      { name: "Figma", context: "UI reference" },
+      { name: "Git", context: { vi: "Quản lý phiên bản mã nguồn", en: "Source control" } },
+      { name: "GitHub", context: { vi: "Lưu trữ mã nguồn dự án", en: "Project source repositories" } },
+      { name: "ESLint", context: { vi: "Kiểm tra chất lượng code", en: "Code quality checks" } },
+    ],
+  },
+  {
+    key: "testing",
+    label: { vi: "Kiểm thử & Đảm bảo chất lượng", en: "Testing & QA" },
+    skills: [
+      { name: "QA workflow tooling", context: { vi: "AI-powered QA DevTool; chi tiết đang xác minh", en: "AI-powered QA DevTool; details under verification" } },
     ],
   },
   {
     key: "ai-ml",
     label: { vi: "AI / ML", en: "AI / ML" },
     skills: [
-      { name: "OpenAI API", context: "GPT integration" },
-      { name: "Item Response Theory", context: "OmniEdu" },
-      { name: "Prompt Engineering" },
+      { name: "OpenAI API", context: { vi: "Tích hợp trong QA DevTool", en: "Integration in the QA DevTool" } },
+      { name: "Item Response Theory", context: { vi: "Cá nhân hóa học tập trong OmniEdu", en: "Learning personalization in OmniEdu" } },
+      { name: "AI tutor", context: { vi: "OmniEdu", en: "OmniEdu" } },
     ],
   },
 ];

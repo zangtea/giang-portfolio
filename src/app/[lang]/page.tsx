@@ -1,4 +1,4 @@
-import { isValidLocale, siteConfig } from "@/config/site";
+import { isValidLocale } from "@/config/site";
 import { notFound } from "next/navigation";
 import { getDictionary } from "@/lib/dictionaries";
 import { HeroSection } from "@/components/sections/hero";
@@ -14,7 +14,7 @@ export default async function HomePage({
   const { lang } = await params;
   if (!isValidLocale(lang)) notFound();
 
-  const dict = await getDictionary();
+  const dict = await getDictionary(lang);
 
   return (
     <>

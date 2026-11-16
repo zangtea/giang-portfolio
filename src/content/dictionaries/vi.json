@@ -6,10 +6,13 @@
     "experience": "Kinh nghiệm",
     "contact": "Liên hệ",
     "openMenu": "Mở menu",
-    "closeMenu": "Đóng menu"
+    "closeMenu": "Đóng menu",
+    "menuTitle": "Menu điều hướng"
   },
   "hero": {
     "greeting": "Xin chào, tôi là",
+    "headline": "Xây dựng sản phẩm web thiết thực",
+    "find_me": "Kết nối với tôi",
     "cta_primary": "Thảo luận về dự án",
     "cta_secondary": "Xem dự án",
     "cta_cv": "Tải CV",
@@ -35,6 +38,10 @@
     "filter_tool": "Tool",
     "filter_ecommerce": "E-commerce",
     "filter_ai": "AI/ML",
+    "filter_group": "Lọc dự án theo nhóm",
+    "project_label": "Dự án tiêu biểu",
+    "architecture": "Kiến trúc hệ thống",
+    "contact_cta": "Trao đổi dự án với",
     "view_detail": "Xem chi tiết",
     "view_github": "GitHub",
     "view_demo": "Live Demo",
@@ -77,6 +84,7 @@
     "form_sending": "Đang gửi...",
     "form_success": "Tin nhắn đã được gửi thành công!",
     "form_error": "Có lỗi xảy ra. Vui lòng thử lại.",
+    "form_unavailable": "Dịch vụ liên hệ tạm thời chưa khả dụng. Vui lòng gửi email trực tiếp.",
     "form_name_required": "Vui lòng nhập họ tên",
     "form_email_invalid": "Email không hợp lệ",
     "form_message_required": "Vui lòng nhập nội dung"
@@ -89,7 +97,7 @@
   "lang": {
     "vi": "Tiếng Việt",
     "en": "English",
-    "switch": "Switch language"
+    "switch": "Chuyển ngôn ngữ"
   },
   "footer": {
     "rights": "Bảo lưu mọi quyền",

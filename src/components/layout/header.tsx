@@ -13,7 +13,7 @@ interface HeaderProps {
 }
 
 export async function Header({ locale }: HeaderProps) {
-  const dict = await getDictionary();
+  const dict = await getDictionary(locale);
 
   const navLabels = {
     about: dict.nav.about,
@@ -49,7 +49,7 @@ export async function Header({ locale }: HeaderProps) {
             {navItems.map((item) => (
               <NavLink
                 key={item.key}
-                href={item.href}
+                href={`/${locale}${item.href}`}
                 label={navLabels[item.key as keyof typeof navLabels] ?? item.key}
               />
             ))}
@@ -59,12 +59,13 @@ export async function Header({ locale }: HeaderProps) {
           <div className="flex items-center gap-2">
             <LanguageSwitcher
               currentLocale={locale}
+              ariaLabel={dict.lang.switch}
               className="hidden sm:flex"
             />
             <ThemeToggle ariaLabel={dict.theme.toggle} />
             <Link
               href={`/${locale}#contact`}
-              className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--color-accent)] text-white text-sm font-medium hover:opacity-90 transition-opacity"
+              className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--color-accent)] text-[var(--color-accent-ink)] text-sm font-medium hover:opacity-90 transition-opacity"
             >
               {dict.hero.cta_primary}
             </Link>
@@ -73,12 +74,15 @@ export async function Header({ locale }: HeaderProps) {
               locale={locale}
               navItems={navItems.map((item) => ({
                 ...item,
+                href: `/${locale}${item.href}`,
                 label:
                   navLabels[item.key as keyof typeof navLabels] ?? item.key,
               }))}
               openLabel={dict.nav.openMenu}
               closeLabel={dict.nav.closeMenu}
-              langSwitcher={<LanguageSwitcher currentLocale={locale} />}
+              menuTitle={dict.nav.menuTitle}
+              langSwitcher={<LanguageSwitcher currentLocale={locale} ariaLabel={dict.lang.switch} />}
+              contactLabel={dict.nav.contact}
             />
           </div>
         </div>

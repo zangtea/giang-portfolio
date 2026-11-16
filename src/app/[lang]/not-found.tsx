@@ -1,23 +1,24 @@
+"use client";
+
 import Link from "next/link";
-import { siteConfig } from "@/config/site";
+import { usePathname } from "next/navigation";
+import enDictionary from "@/content/dictionaries/en.json";
+import viDictionary from "@/content/dictionaries/vi.json";
 
 export default function NotFound() {
-  // We can't use getDictionary here (not in [lang] context), so use bilingual text
+  const locale = usePathname()?.startsWith("/en") ? "en" : "vi";
+  const dict = locale === "vi" ? viDictionary : enDictionary;
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
-      <p className="text-8xl font-bold text-[var(--color-brand-500)] mb-4">404</p>
-      <h1 className="text-2xl font-semibold mb-2">
-        Page not found · Trang không tìm thấy
-      </h1>
-      <p className="text-[var(--color-mut)] mb-8 max-w-md">
-        The page you&apos;re looking for doesn&apos;t exist. ·
-        Trang bạn tìm kiếm không tồn tại.
-      </p>
+    <div className="flex min-h-[60vh] flex-col items-center justify-center px-4 text-center">
+      <p className="mb-4 font-mono text-sm text-[var(--color-accent)]">404</p>
+      <h1 className="mb-2 text-2xl font-semibold">{dict.errors["404_title"]}</h1>
+      <p className="mb-8 max-w-md text-[var(--color-mut)]">{dict.errors["404_desc"]}</p>
       <Link
-        href={`/${siteConfig.defaultLocale}`}
+        href={`/${locale}`}
         className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--color-accent)] text-white font-medium hover:opacity-90 transition-opacity"
       >
-        ← Về trang chủ / Go home
+        {dict.errors.back_home}
       </Link>
     </div>
   );

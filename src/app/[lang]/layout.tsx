@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 
+export const instant = false;
+
 export async function generateStaticParams() {
   return siteConfig.locales.map((lang) => ({ lang }));
 }
@@ -18,9 +20,10 @@ export async function generateMetadata({
 
   const isVi = locale === "vi";
   const title = isVi
-    ? `${siteConfig.displayName} — Full-stack Developer`
+    ? `${siteConfig.displayName} — Lập trình viên Full-stack`
     : `${siteConfig.displayName} — Full-stack Developer`;
   const description = siteConfig.bio[locale];
+  const siteUrl = siteConfig.siteUrl;
 
   return {
     title: {
@@ -28,13 +31,17 @@ export async function generateMetadata({
       default: title,
     },
     description,
-    metadataBase: new URL(siteConfig.siteUrl),
+    ...(siteUrl ? { metadataBase: new URL(siteUrl) } : {}),
     alternates: {
-      canonical: `${siteConfig.siteUrl}/${locale}`,
-      languages: {
-        vi: `${siteConfig.siteUrl}/vi`,
-        en: `${siteConfig.siteUrl}/en`,
-      },
+      ...(siteUrl
+        ? {
+            canonical: `${siteUrl}/${locale}`,
+            languages: {
+              vi: `${siteUrl}/vi`,
+              en: `${siteUrl}/en`,
+            },
+          }
+        : {}),
     },
     openGraph: {
       type: "website",
@@ -43,7 +50,7 @@ export async function generateMetadata({
       title,
       description,
       siteName: siteConfig.displayName,
-      url: `${siteConfig.siteUrl}/${locale}`,
+      ...(siteUrl ? { url: `${siteUrl}/${locale}` } : {}),
     },
     twitter: {
       card: "summary_large_image",
@@ -63,11 +70,18 @@ export default async function LocaleLayout({
 
   return (
     <>
-      <Header locale={lang} />
-      <main id="main-content" className="flex-1">
+      <a href="#main-content" lang={lang} className="skip-link">
+        {lang === "vi" ? "Bỏ qua đến nội dung chính" : "Skip to main content"}
+      </a>
+      <div lang={lang}>
+        <Header locale={lang} />
+      </div>
+      <main id="main-content" lang={lang} className="flex-1">
         {children}
       </main>
-      <Footer locale={lang} />
+      <div lang={lang}>
+        <Footer locale={lang} />
+      </div>
     </>
   );
 }

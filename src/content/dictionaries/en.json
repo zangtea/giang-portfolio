@@ -6,10 +6,13 @@
     "experience": "Experience",
     "contact": "Contact",
     "openMenu": "Open menu",
-    "closeMenu": "Close menu"
+    "closeMenu": "Close menu",
+    "menuTitle": "Navigation menu"
   },
   "hero": {
     "greeting": "Hi, I'm",
+    "headline": "Building practical web products",
+    "find_me": "Find me on",
     "cta_primary": "Discuss a project",
     "cta_secondary": "View projects",
     "cta_cv": "Download CV",
@@ -35,6 +38,10 @@
     "filter_tool": "Tool",
     "filter_ecommerce": "E-commerce",
     "filter_ai": "AI/ML",
+    "filter_group": "Filter projects by category",
+    "project_label": "Selected project",
+    "architecture": "System architecture",
+    "contact_cta": "Discuss a project with",
     "view_detail": "View details",
     "view_github": "GitHub",
     "view_demo": "Live Demo",
@@ -77,6 +84,7 @@
     "form_sending": "Sending...",
     "form_success": "Message sent successfully!",
     "form_error": "An error occurred. Please try again.",
+    "form_unavailable": "The contact service is temporarily unavailable. Please email me directly.",
     "form_name_required": "Please enter your name",
     "form_email_invalid": "Invalid email address",
     "form_message_required": "Please enter a message"
@@ -89,7 +97,7 @@
   "lang": {
     "vi": "Tiếng Việt",
     "en": "English",
-    "switch": "Chuyển ngôn ngữ"
+    "switch": "Switch language"
   },
   "footer": {
     "rights": "All rights reserved",

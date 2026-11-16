@@ -20,12 +20,9 @@ export function SectionWrapper({
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    // Respect prefers-reduced-motion
-    const prefersReduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-    if (prefersReduced) {
-      setVisible(true);
+    if (!ref.current) return;
+    if (!("IntersectionObserver" in window)) {
+      ref.current.classList.add("section-visible");
       return;
     }
 
@@ -39,17 +36,20 @@ export function SectionWrapper({
       { threshold: 0.1 }
     );
 
-    if (ref.current) observer.observe(ref.current);
+    observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
 
   return (
     <Tag
       id={id}
-      ref={ref as React.RefObject<HTMLElement>}
+      ref={(element: HTMLElement | null) => {
+        ref.current = element;
+      }}
       className={cn(
-        "py-20 px-4 sm:px-6 lg:px-8 transition-all duration-700",
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
+        "section-reveal py-20 px-4 transition-all duration-700 sm:px-6 lg:px-8",
+        "motion-reduce:transition-none",
+        visible && "section-visible",
         className
       )}
     >

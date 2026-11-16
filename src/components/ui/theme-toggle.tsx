@@ -1,10 +1,14 @@
 "use client";
 
-import { useLayoutEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { Moon, Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-function getTheme(): "light" | "dark" {
+type Theme = "light" | "dark";
+
+const THEME_CHANGE_EVENT = "theme-change";
+
+function getTheme(): Theme {
   if (typeof window === "undefined") return "light";
   try {
     const stored = localStorage.getItem("theme");
@@ -17,13 +21,48 @@ function getTheme(): "light" | "dark" {
   }
 }
 
-function applyTheme(theme: "light" | "dark") {
+function applyTheme(theme: Theme, persist = false) {
   document.documentElement.setAttribute("data-theme", theme);
-  try {
-    localStorage.setItem("theme", theme);
-  } catch {
-    // ignore
+  if (persist) {
+    try {
+      localStorage.setItem("theme", theme);
+    } catch {
+      // ignore
+    }
   }
+}
+
+function subscribeTheme(callback: () => void) {
+  const media = window.matchMedia("(prefers-color-scheme: dark)");
+
+  const handleStorage = (event: StorageEvent) => {
+    if (event.key === "theme") {
+      applyTheme(getTheme());
+      callback();
+    }
+  };
+
+  const handleSystemChange = () => {
+    try {
+      if (!localStorage.getItem("theme")) {
+        applyTheme(getTheme());
+        callback();
+      }
+    } catch {
+      applyTheme(getTheme());
+      callback();
+    }
+  };
+
+  window.addEventListener("storage", handleStorage);
+  window.addEventListener(THEME_CHANGE_EVENT, callback);
+  media.addEventListener("change", handleSystemChange);
+
+  return () => {
+    window.removeEventListener("storage", handleStorage);
+    window.removeEventListener(THEME_CHANGE_EVENT, callback);
+    media.removeEventListener("change", handleSystemChange);
+  };
 }
 
 interface ThemeToggleProps {
@@ -35,23 +74,21 @@ export function ThemeToggle({
   className,
   ariaLabel = "Toggle theme",
 }: ThemeToggleProps) {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
-
-  // Re-apply after React Strict Mode dev remount clears data-theme
-  useLayoutEffect(() => {
-    const current = getTheme();
-    setTheme(current);
-    applyTheme(current);
-  }, []);
+  const theme = useSyncExternalStore<Theme>(
+    subscribeTheme,
+    getTheme,
+    () => "light"
+  );
 
   function toggle() {
-    const next = theme === "dark" ? "light" : "dark";
-    setTheme(next);
-    applyTheme(next);
+    const next: Theme = theme === "dark" ? "light" : "dark";
+    applyTheme(next, true);
+    window.dispatchEvent(new Event(THEME_CHANGE_EVENT));
   }
 
   return (
     <button
+      type="button"
       onClick={toggle}
       aria-label={ariaLabel}
       title={ariaLabel}

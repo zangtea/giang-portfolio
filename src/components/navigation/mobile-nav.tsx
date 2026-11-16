@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { X, Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -19,6 +19,8 @@ interface MobileNavProps {
   openLabel: string;
   closeLabel: string;
   langSwitcher: ReactNode;
+  contactLabel: string;
+  menuTitle: string;
 }
 
 export function MobileNav({
@@ -27,8 +29,13 @@ export function MobileNav({
   openLabel,
   closeLabel,
   langSwitcher,
+  contactLabel,
+  menuTitle,
 }: MobileNavProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   // Lock body scroll when menu is open
   useEffect(() => {
@@ -42,15 +49,38 @@ export function MobileNav({
     };
   }, [isOpen]);
 
-  // Close on Escape key
+  // Keep keyboard focus inside the open drawer and restore it to the trigger.
   useEffect(() => {
+    if (!isOpen) return;
+    const trigger = triggerRef.current;
+    closeRef.current?.focus();
+
     function handleKeyDown(e: KeyboardEvent) {
-      if (e.key === "Escape") setIsOpen(false);
+      if (e.key === "Escape") {
+        setIsOpen(false);
+        return;
+      }
+      if (e.key !== "Tab") return;
+
+      const focusable = menuRef.current?.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), input:not([disabled])'
+      );
+      if (!focusable?.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     }
-    if (isOpen) {
-      document.addEventListener("keydown", handleKeyDown);
-    }
-    return () => document.removeEventListener("keydown", handleKeyDown);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      trigger?.focus();
+    };
   }, [isOpen]);
 
   function handleNavClick(href: string) {
@@ -68,6 +98,8 @@ export function MobileNav({
   return (
     <div className="md:hidden">
       <button
+        ref={triggerRef}
+        type="button"
         onClick={() => setIsOpen(true)}
         aria-label={openLabel}
         aria-expanded={isOpen}
@@ -88,10 +120,13 @@ export function MobileNav({
 
       {/* Drawer */}
       <div
+        ref={menuRef}
         id="mobile-nav-menu"
         role="dialog"
         aria-modal="true"
-        aria-label="Navigation menu"
+          aria-label={menuTitle}
+          aria-hidden={!isOpen}
+          inert={!isOpen}
         className={cn(
           "fixed inset-y-0 right-0 z-50 w-72 max-w-full",
           "bg-[var(--color-bg)] border-l border-[var(--color-bdr)]",
@@ -105,6 +140,8 @@ export function MobileNav({
             Menu
           </span>
           <button
+            ref={closeRef}
+            type="button"
             onClick={() => setIsOpen(false)}
             aria-label={closeLabel}
             className="flex h-9 w-9 items-center justify-center rounded-full hover:bg-[var(--color-surf)] transition-colors"
@@ -131,9 +168,9 @@ export function MobileNav({
           <Link
             href={`/${locale}#contact`}
             onClick={() => setIsOpen(false)}
-            className="px-4 py-2 rounded-full bg-[var(--color-accent)] text-white text-sm font-medium hover:opacity-90 transition-opacity"
+            className="px-4 py-2 rounded-full bg-[var(--color-accent)] text-[var(--color-accent-ink)] text-sm font-medium hover:opacity-90 transition-opacity"
           >
-            Contact
+            {contactLabel}
           </Link>
         </div>
       </div>
